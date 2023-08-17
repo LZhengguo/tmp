@@ -53,9 +53,9 @@ do
 
         if [ -e $Path ];then
 
-            Find_x=$(grep "Pol" $Path | awk '{print $2}')
-            Find_y=$(grep "Pol" $Path | awk '{print $3}')
-            Find_z=$(grep "Pol" $Path | awk '{print $4}')
+            Find_x=$(printf ".15f" $(grep "Pol" $Path | awk '{print $2}'))
+            Find_y=$(printf ".15f" $(grep "Pol" $Path | awk '{print $3}'))
+            Find_z=$(printf ".15f" $(grep "Pol" $Path | awk '{print $4}'))
 
             if [ ! -z "$Find_x" ]&&[ ! -z "$Find_y" ]&&[ ! -z "$Find_z" ];then
 
