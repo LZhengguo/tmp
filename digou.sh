@@ -58,7 +58,19 @@ do
             Find_z=$(printf "%.15f" $(grep "Pol" $Path | awk '{print $4}'))
 
             if [ ! -z "$Find_x" ]&&[ ! -z "$Find_y" ]&&[ ! -z "$Find_z" ];then
-
+                
+                if [ $(echo "$Find_x < 0" | bc)=1 ];then
+                    Find_x=$(printf "%.15f" $(echo "$Find_x * -1" | bc))
+                fi
+                
+                if [ $(echo "$Find_y < 0" | bc)=1 ];then
+                    Find_x=$(printf "%.15f" $(echo "$Find_x * -1" | bc))
+                fi
+                
+                if [ $(echo "$Find_z < 0" | bc)=1 ];then
+                    Find_x=$(printf "%.15f" $(echo "$Find_x * -1" | bc))
+                fi
+                
                 Cal_cnt_x=$(echo "scale=15;$c_x+$Find_x" | bc)
                 Cal_cnt_y=$(echo "scale=15; $c_y+$Find_y" | bc)
                 Cal_cnt_z=$(echo "scale=15; $c_z+$Find_z" | bc)
